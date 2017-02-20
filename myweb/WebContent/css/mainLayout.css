@@ -1,0 +1,60 @@
+@CHARSET "utf-8";
+
+	body{
+		width:680px;	
+		margin:0px auto;
+	}
+	header{
+		width:680px;
+	}
+	header p{
+		font-size:15px;
+		text-align:right;
+	}
+	header h1{
+		color:#af9776;
+		text-shadow:5px 5px 5px black;
+		text-align:center;
+		font-size:45px;
+	}
+	header nav{
+		background:#af9776;
+		font-weight:bold;
+		border-top:1px solid black;
+		border-bottom:1px solid black;
+	}
+	header nav li{
+		list-style-type: none;
+		display: inline;
+		margin-left:50px;
+	}
+	section{
+		width:680px;
+	}
+	#mainImg{
+		width:300px;
+		float:left; /*나를 왼쪽 기준으로 둘꺼야*/
+	}
+	#mainImg img{
+		width:300px;
+	}
+	#mainMenu{
+		width:380px;
+		float:left;
+	}
+	#profileImg{
+		width:300px;
+		float:left; /*나를 왼쪽 기준으로 둘꺼야*/
+	}
+	#profileImg img{
+		width:300px;
+	}
+	footer{
+		width:680px;
+		clear:both; /*floating 해제*/
+	}
+	footer p{
+		text-align:center;
+	}
+	
+
