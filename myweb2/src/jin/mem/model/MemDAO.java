@@ -84,13 +84,14 @@ public class MemDAO {
 				String name = rs.getString("name");
 				String tel = rs.getString("tel");
 				String addr = rs.getString("addr");
-				Date joindate = rs.getDate("joindate");
+				java.sql.Date joindate = rs.getDate("joindate");
 				
 				MemDTO dto = new MemDTO(idx, id, pwd, name, tel, addr, joindate);
 				
 				arr.add(dto);
 			}
 			return arr;
+			
 		} catch(Exception e){
 			e.printStackTrace();
 			return null;			
@@ -104,6 +105,63 @@ public class MemDAO {
 		
 	}
 	
+	/** 회원 검색 관련 메서드*/
+	public ArrayList<MemDTO> memFind(String key, String value){
+		try{
+			conn = jin.db.JinDB.getConn();
+			
+			String sql = "select * from jsp_member where "+key+"= ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, value);
+			
+			rs = ps.executeQuery();
+			
+			ArrayList<MemDTO> arr = new ArrayList<MemDTO>();
+			
+			while(rs.next()){
+				int idx = rs.getInt("idx");
+				String id = rs.getString("id");
+				String pwd = rs.getString("pwd");
+				String name = rs.getString("name");
+				String tel = rs.getString("tel");
+				String addr = rs.getString("addr");
+				java.sql.Date joindate = rs.getDate("joindate");
+				
+				MemDTO dto = new MemDTO(idx, id, pwd, name, tel, addr, joindate);
+				
+				arr.add(dto);				
+			}
+			
+			return arr;
+			
+		} catch(Exception e){
+			e.printStackTrace();
+			return null;			
+		} finally{
+			try{
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();				
+			} catch(Exception e2){}
+		}
+	}
+	
+	/** 로그인 관련 메서드 */
+	public String memLogin(){
+		try{
+			conn = jin.db.JinDB.getConn();
+			
+			
+			
+		} catch(Exception e){
+			
+		} finally{
+			try{
+				
+			} catch(Exception e2){}
+		}
+	}
 	
 	
 	
