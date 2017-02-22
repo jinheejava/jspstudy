@@ -15,7 +15,8 @@ public class MemberFindAction implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//강사님코드
-		req.setCharacterEncoding("utf-8"); //3 ->쭉
+		req.setCharacterEncoding("utf-8"); //3 -> 쭉
+		// post방식 한글 깨짐 방지
 		
 		String method = req.getMethod();
 		String fkey = req.getParameter("key");
