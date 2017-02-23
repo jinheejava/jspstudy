@@ -151,7 +151,7 @@ public class BbsDAO {
 			 * 
 			 * 이해 순서
 			 * 
-			 * 1. select * from jsp_bbs order by idx desc a -> jsp_bbs의 값(글)들을 idx로 정렬해줌
+			 * 1. select * from jsp_bbs order by idx desc -> jsp_bbs의 값(글)들을 idx로 정렬해줌
 			 * 2. 이 결과값을 테이블 자체로 가지고 서브쿼리 짜기
 			 * 3. select rownum as rnum, a.* from (select * from jsp_bbs order by idx desc) a) b
 			 * 	  -> 정렬한 테이블의 값에 rownum 번호들을 매겨준다. where절에 idx를 조건으로 순서를 매겨서 글 목록(list)을 짤 경우 중간에 사용자가 글을 삭제했을 경우엔 그 idx만이 비고 나머지 값들에 대한 글들만 목록으로 보여짐
