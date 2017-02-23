@@ -24,7 +24,7 @@
 <body>
 <form name="bbs">
 	<h2>게시판</h2>
-		<table border="1" cellspacing="0" width="550" height="300">
+		<table border="1" cellspacing="0" width="550">
 			<thead>
 				<tr>
 					<th> NO.</th>
@@ -57,11 +57,11 @@
 					<c:if test="${usergroup!=0}">
 					<a href="bbsList.jin?cp=${(usergroup-1)*pagesize+pagesize}"> &lt;&lt;</a> </c:if>
 					
-					<c:forEach var="page" begin="${usergruop*pagesize+1}" end="${usergroup*pagesize+pagesize}" step="1">
+					<c:forEach var="page" begin="${usergroup*pagesize+1}" end="${usergroup*pagesize+pagesize}">
 					&nbsp;&nbsp;&nbsp; <a href="bbsList.jin?cp=${page}"> ${page}</a> &nbsp;&nbsp;&nbsp;&nbsp;
 					</c:forEach>
 					
-					<c:if test="${usergroup!=((totalpage/pagesize)-(totalpage%pagesize==0?1:0)) } }">
+					<c:if test="${usergroup!=((totalpage/pagesize)-(totalpage%pagesize==0?1:0))}">
 					<a href="bbsList.jin?cp=${(usergroup+1)*pagesize+1}"> &gt;&gt;</a></c:if>
 					</td>
 				</tr>
