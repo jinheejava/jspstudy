@@ -57,7 +57,7 @@
 
 <%
 	if(userGroup!=0){
-		%> <a href="pageTest.jsp?cp=<%= (userGroup-1)*pageSize+pageSize%>"> &lt;&lt; </a>
+		%> <a href='pageTest.jsp?cp=<%= (userGroup-1)*pageSize+pageSize%>'> &lt;&lt; </a>
 		<%
 	}
 	/* 첫번째 그룹이 아니면 페이지 왼쪽편에 앞 페이지로 돌아가는 << 표시 해주기
@@ -68,12 +68,12 @@
 	     
 		for(int i=userGroup*pageSize+1;i<=userGroup*pageSize+pageSize;i++){
 			%>
-			&nbsp;&nbsp;&nbsp;&nbsp;<a href="pageTest.jsp?cp=<%=i%>"> <%= i %> </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href='pageTest.jsp?cp=<%=i%>'> <%= i %> </a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<%
 			if(i==totalPage) break;
 		}
 	if(userGroup!=((totalPage/pageSize)-(totalPage%pageSize==0?1:0))){
-		%> <a href="pageTest.jsp?cp=<%= (userGroup+1)*pageSize+1 %>"> &gt;&gt; </a>
+		%> <a href='pageTest.jsp?cp=<%= (userGroup+1)*pageSize+1 %>'> &gt;&gt; </a>
 		<%
 	}
 	/* 마지막 그룹이 아니면 오른쪽으로 가는 화살표 보여주기

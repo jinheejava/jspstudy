@@ -17,6 +17,7 @@
   	<servlet-mapping>
   		<servlet-name> jinController</servlet-name>
   		<url-pattern>*.jin</url-pattern>
+  		<url-pattern>*.yong</url-pattern>
   	</servlet-mapping> 
   
    

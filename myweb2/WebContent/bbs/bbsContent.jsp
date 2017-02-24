@@ -16,9 +16,9 @@
 		<thead>
 			<tr>
 				<th> 제목 </th>
-				<td> <input type="text" name="subject" value="${dto.subject}" readonly> </td>
+				<td> ${dto.subject}</td>
 				<th> 작성자 </th>
-				<td> <input type="text" name="writer" value="${dto.writer}" readonly> </td>				
+				<td> ${dto.writer} </td>				
 			</tr>
 		</thead>
 		<tbody>

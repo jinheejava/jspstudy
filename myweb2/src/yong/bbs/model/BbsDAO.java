@@ -1,10 +1,9 @@
-package jin.bbs.model;
+package yong.bbs.model;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
-import jin.bbs.*;
-import jin.mem.model.*;
+import yong.bbs.model.*;
 
 public class BbsDAO {
 	
@@ -12,7 +11,7 @@ public class BbsDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
-	/** 글쓰기 관련 메서드*/	
+	/** 글쓰기 기능 관련 메서드*/
 	public int bbsWrite(BbsDTO dto){
 		try{
 			conn = jin.db.JinDB.getConn();
@@ -27,13 +26,43 @@ public class BbsDAO {
 			
 			int count = ps.executeUpdate();
 			
-			return count;
+			return count;			
 			
 		} catch(Exception e){
 			e.printStackTrace();
-			return -1;			
+			return -1;
 		} finally{
 			try{
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch(Exception e2){}
+		}		
+	}
+	
+	/** 총 게시물 수 관련 메서드*/
+	public int getTotalCnt(){
+		try{
+			conn = jin.db.JinDB.getConn();
+			
+			String sql = "select count(*) from jsp_bbs";
+			
+			ps = conn.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			rs.next();
+			
+			int count = rs.getInt(1);
+			return count==0?1:count;
+			
+			//rs.next()의 결과가 없어서 0이 반환되면 결과인 totalcnt를 이용해서 구하는 totalpage를 구할 때 에러가 나게되므로 0일때 1을 반환하게 해준다.
+			
+		} catch(Exception e){
+			e.printStackTrace();
+			return 1;			
+		} finally{
+			try{
+				if(rs!=null) rs.close();
 				if(ps!=null) ps.close();
 				if(conn!=null) conn.close();
 				
@@ -41,7 +70,7 @@ public class BbsDAO {
 		}
 	}
 	
-	/** 목록 글 정보 가져오기 메서드*/
+	/** 리스트 관련 메서드*/
 	public ArrayList<BbsDTO> bbsList(int cp, int ls){
 		try{
 			conn = jin.db.JinDB.getConn();
@@ -73,6 +102,7 @@ public class BbsDAO {
 				arr.add(dto);			
 			}
 			return arr;
+			
 		} catch(Exception e){
 			e.printStackTrace();
 			return null;
@@ -80,57 +110,25 @@ public class BbsDAO {
 			try{
 				if(rs!=null) rs.close();
 				if(ps!=null) ps.close();
-				
-				if(conn!=null) conn.close();		
-			} catch(Exception e2){}
-		}
-	}
-
-	
-	/** 총 게시물 수 관련 메서드*/
-	public int totalCnt(){
-		try{
-			conn = jin.db.JinDB.getConn();
-			
-			String sql = "select count(*) from jsp_bbs";
-			
-			ps = conn.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-			
-			rs.next();
-			
-			return rs.getInt(1);
-			
-		} catch(Exception e){
-			e.printStackTrace();
-			return -1;
-			
-		} finally{
-			try{
-				if(rs!=null) rs.close();
-				if(ps!=null) ps.close();
 				if(conn!=null) conn.close();
-				
 			} catch(Exception e2){}
 		}
 	}
 	
-	/** 본문보기 관련 메서드 */
-	public BbsDTO bbsContent(int contentidx){
+	/** 본문 관련 메서드*/
+	public BbsDTO bbsContent(int idx){
 		try{
 			conn = jin.db.JinDB.getConn();
 			
 			String sql = "select * from jsp_bbs where idx=?";
 			
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, contentidx);
+			ps.setInt(1, idx);
 			
 			rs = ps.executeQuery();
 			
 			BbsDTO dto = null;
 			if(rs.next()){
-				int idx = rs.getInt("idx");
 				String writer = rs.getString("writer");
 				String pwd = rs.getString("pwd");
 				String subject = rs.getString("subject");
@@ -154,42 +152,6 @@ public class BbsDAO {
 				
 			} catch(Exception e2){}
 		}
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }
