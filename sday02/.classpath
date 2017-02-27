@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/aopalliance.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/cglib-nodep-2.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/commons-collections-testframework-3.2.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/commons-dbcp-1.4.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/cos.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/jstl.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-aop-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-aspects-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-beans-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-build-src-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-context-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-context-support-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-core-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-expression-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-instrument-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-instrument-tomcat-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-jdbc-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-jms-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-orm-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-oxm-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-struts-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-test-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-tx-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-web-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-webmvc-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/spring-webmvc-portlet-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/한진희/통합lib/standard.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
