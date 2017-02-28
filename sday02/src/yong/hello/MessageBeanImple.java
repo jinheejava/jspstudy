@@ -2,7 +2,7 @@ package yong.hello;
 
 public class MessageBeanImple implements MessageBean {
 
-	//interface를 상속받아 생성된 클래스엔 접미로 Imple을 붙여 표시해줌
+	//interface를 상속받아 생성된 클래스엔 앞으로 접미로 Imple을 붙여 표시해줌
 	
 	private String name;
 	private String greeting;
