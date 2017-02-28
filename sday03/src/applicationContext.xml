@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	
+	<bean id="yongAdvice" class="yong.aop.TimeChecker"/>
+	
+	<aop:config><!-- advisor를 만들 수 있는 공간 -->
+		<aop:aspect id="yongAspect" ref="yongAdvice"> <!-- yongAdvice를 관점으로 바라보겠다 -->
+			<!-- 이 관점이 언제 실행될지 지정해주어야 함 -->
+			<aop:pointcut expression="execution(public * yong.hello.*.say*(..))" id="publicMethod"/> <!-- 카페  [AOP execution 명시자 Pointcut 표현식] 글 참고 -->
+			<!-- 이 pointcut이 어떻게 실행될것인지 지정 around:전/후처리 -->
+			<aop:around pointcut-ref="publicMethod" method="yongTime"/> <!-- 수행되어야하는 메서드 이름 지정 -->
+		</aop:aspect>
+	</aop:config>
+	
+
+	<bean id="messageBean" class="yong.hello.MessageBeanImple">
+		<constructor-arg>
+			<value>spring</value>
+		</constructor-arg>
+		<property name="greeting">
+			<value>hello</value>
+		</property>
+	</bean>
+</beans>
