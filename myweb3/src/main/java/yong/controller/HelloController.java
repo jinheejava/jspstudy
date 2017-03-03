@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class HelloController {
 
-	@RequestMapping("/hello.do")
+	@RequestMapping("/hello.do") 
 	public ModelAndView hello(){
 		
 		String msg = "spring mvc framework 적용 결과";
@@ -16,7 +16,7 @@ public class HelloController {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("msg", msg);
-		mav.setViewName("hello"); //.jsp를 써도되고 안써도 됨 ViewResolver가 사용자가 반복적으로 사용하는 접미어를 붙여준다
+		mav.setViewName("hello"); //.jsp를 써도되고 안써도 됨 ViewResolver가 사용자가 반복적으로 사용하는 접미어를 붙여준다 , 설정파일에 등록
 		
 		return mav;
 	}

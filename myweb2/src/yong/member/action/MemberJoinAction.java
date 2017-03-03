@@ -30,7 +30,7 @@ public class MemberJoinAction implements CommandHandler {
 		
 		req.setAttribute("msg", msg);
 		
-		return "/member/memberMsg.jsp";
+		return "/ymember/memberMsg.jsp";
 	}
 
 }

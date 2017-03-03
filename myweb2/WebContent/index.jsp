@@ -39,7 +39,7 @@
 		<li> <a href="member.yong">회원가입(강사님)</a> </li>		
 		<li> <a href="memList.jin">회원보기</a> </li>
 		<li> <a href="memFind.jin">회원검색</a> </li>
-		<li> <a href="memFind.yong">회원검색(강사님)</a> </li>
+		<li> <a href="memberFind.yong">회원검색(강사님)</a> </li>
 		<li> <a href="bbsList.jin">게시판</a> </li>
 		<li> <a href="bbsList.yong">게시판(강사님)</a> </li>
 		<li> <a href="guestbook.jin">방명록</a> </li>

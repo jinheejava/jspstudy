@@ -7,11 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2> Index </h2>
-<ul>
-	<li><a href="hello.do">Spring MVC</a></li>
-	<li><a href="memoWrite.do">메모 작성하기</a></li>
-	<li><a href="memberJoin.do">회원가입</a></li>
-</ul>
+<form name="idCheck" action="idCheck.do" method="post">
+	<fieldset>
+		<legend> ID 중복확인</legend>
+		ID: <input type="text" name="id">
+		<input type="submit" value="중복확인">
+	</fieldset>
+</form>
+
 </body>
 </html>

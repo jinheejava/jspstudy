@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import jin.controller.CommandHandler;
 
-public class MemberLoginFormAction implements CommandHandler {
+public class MemberIdCheckFormAction implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		return "/ymember/login.jsp";
+		
+		return "/ymember/idCheck.jsp";
 	}
 
 }

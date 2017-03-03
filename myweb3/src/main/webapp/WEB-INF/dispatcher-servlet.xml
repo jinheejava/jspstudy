@@ -3,11 +3,25 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="helloController" class="yong.controller.HelloController"/>
+	<!-- configs 설정파일 -->
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"><!-- 클래스는 기본적으로 제공이되고 이를 객체를 생성하고 사용하려면 등록을 해주어야함 -->
-		<property name="prefix" value="/WEB-INF/view/"/>
-		<property name="suffix" value=".jsp"/>
+	<!-- controller -->
+	<bean id="helloController" class="yong.controller.HelloController"/> <!-- 17.02.28 -->
+	
+	<bean id="memoController" class="yong.controller.MemoController"/> <!-- 17.03.03 -->
+	
+	<bean id="memberController" class="jin.controller.MemberController"/>
+	
+	<!-- service/DAO, DAO 말고 service를 사용하는 개발자도 있음 --><!-- 17.03.03 -->
+	<bean id="memoDao" class="yong.memo.model.MemoDAOImple"/>
+	<bean id="memberDao" class="jin.member.model.MemberDAOImple"/>
+	
+	<!-- view -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!-- 17.02.28 -->
+	<!-- 클래스는 기본적으로 제공이되고 이를 객체를 생성하고 사용하려면 등록을 해주어야함 -->
+		<property name="prefix" value="/WEB-INF/view/"/> <!-- 접두어로 경로지정 -->
+		<property name="suffix" value=".jsp"/> <!-- 접미어로 .jsp 가 자동으로 등록되도록 설정 -->
 	</bean>
 
 </beans>
