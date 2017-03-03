@@ -1,0 +1,147 @@
+파일 : sday01 / sday02
+카페 글:
+Spring 주요기능 및 특징
+일반 자바 개발 방식과 스프링 적용 개발 방식의 차이
+스프링 XML 설정파일 <bean> 태그 속성들
+스프링의 장점 및 특징 그리고 스프링의 모듈
+스프링 DI (Dependency Injection)에 대해서..
+
+
+17.02.27 월
+
+카페 - 자료실에서 통합lib / AOP 구현 관련 의존 라이브러리  다운받아서 모두 추가하기
+
+프레임워크
+
+* EJB
+class > new 생성자 - 프로토 타입
+          calendar처럼 이미 있는 것 사용해서 만드는 - 싱글톤 타입
+
+ 사용자가 요구 할 때마다 자원을 만들어 제공하는것이 아니라
+미리 자원을 만들어놓고 사용자가 요구하면 제공해준다
+
+ 한 업체가 만든 것이 아니라 여러 벤더 업체들이 모여서 만들어 기능이 엄청 많지만
+실제 사용하는 기능은 몇 가지 안됨
+
+ 반드시 EJB에서 제공하는...?....
+
+ 서버 없이는 테스트 X
+
+---------------------------------------------------------------------------------------------
+
+* Spring
+
+- 웹, 모바일에 상관없이 적용 가능
+
+ 경량형 컨테이너 : EJB의 쓸데 없는 기능등을 제거
+ -> EJB는 설치형 / 스프링은 library형
+
+ 모두 싱글톤 방식
+메모리 사용을 극대화
+
+** DI (외부 주입): 
+	외부에서 변경 된 파일을 넘겨주었을 때 코드를 변경하지 않아도 됨
+
+** AOP (관점 지향 프로그래밍):
+	
+** POJO :
+	일반 개발 방식
+
+ga(안정화 버전
+라이브러리 파일명에 ga 붙어있는 게 많은 사람들이 사용하고
+안정화된 버전이므로 ga가 붙은 걸 다운받는게 좋음
+
+
+이클립스 - help - Eclipse Merketplace - sts 검색 - 3.8.3.RElEASE 설치
+
+** Bean : 웹의 컴포넌트
+
+-----------------------------------------오후 -----------------------------------
+
+** DI(Dependency Injection 외부 주입) **
+ 자원 관리에 주된 목적성
+객체 사이의 의존 관계를 자기 자신이 아닌 외부에 의해 설정된다는 개념
+
+- 스프링의 인젝션 두가지 방법
+: Constructor Injection (생성자
+: Setter Injection (설정 파일
+
+* Constructor *
+
+public class Bar{}
+
+public class Foo{
+	
+	private Bar bar;
+	
+	public Foo(Bar bar){
+		this.bar = bar;
+	}
+}
+
+Bar bar = new Bar();
+Foo foo = new Foo(bar);
+
+- <constructor-arg> 태그
+
+ 기본 자료형 + String = value
+ 나머지는 = ref 
+
+↓
+
+<bean id="bar" class="Bar"/>
+
+<bean id="foo" class="Foo">
+	<constructor-arg>
+		<ref bean="bar"/>
+	</constructor-arg>
+</bean>
+
+
+* setter Injection *
+
+public class Bar{}
+
+public class Foo{
+	
+	private Bar bar;
+	
+	public Foo(){
+		
+	}
+	
+	public void setBar(Bar bar){
+		
+		this.bar=bar;
+	}
+}
+
+Bar bar = new Bar();
+Foo foo = new Foo();
+foo.setBar(bar);
+
+<property> 속성
+* name = 필수 속성!!
+value = 기본 자료형 + string
+ref = 나머지 자료형
+
+
+↓
+
+<bean id="foo" class="Foo">
+	<property name="bar" ref="bar"> </property>
+</bean>
+
+<bean id="bar" class="Bar"/>
+
+=================================
+스프링
+
+1. 카페 자료실에서 통합라이브러리, AOP 구현 관련 의존 라이브러리 다운 압축해제 후 합치고
+2. 프로젝트에서 마우스 오른쪽 Build Path - Add External Archives.. 해서 모두 추가
+3. src 에 new - other - Spring Bean Configuration File => applicationContext 이름으로 설정
+
+이 두가지를 하면 스프링 기반의 프로젝트로 변경 됨
+
+
+interface 쓰는 이유 : 의존성은 낮추고 확장성은 높이기 위해
