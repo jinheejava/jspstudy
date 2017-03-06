@@ -2,6 +2,7 @@ package yong.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,7 +30,7 @@ public class MemoController {
 	}
 	
 	@RequestMapping(/*value="/memoWrite.do",*/ method=RequestMethod.POST) // memoWrite.do 라는 명령어로 들어오되 POST방식 일 때 수행
-	public ModelAndView memoSubmit(MemoDTO command){
+	public ModelAndView memoSubmit(@ModelAttribute("cmd") MemoDTO command){ //클래스 명이 너무 길 경우 클래스명 앞에 @ModelAttribute를 이용해 별칭을 지정해줄 수 있다
 		/* Spring에서는 home의 이름과 DTO의 이름이 같으면 자동적으로 매칭을 해주어 DTO를 매개변수로만 넣어주면 된다
 		 * 넘어오는 값들을 request.getParameter로 받아주지 않아도 자동 매칭된다 */		
 		

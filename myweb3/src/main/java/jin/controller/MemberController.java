@@ -1,5 +1,12 @@
 package jin.controller;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,21 +63,83 @@ public class MemberController {
 	@RequestMapping(value="/idCheck.do", method=RequestMethod.POST)
 	public ModelAndView idCheckSubmit(MemberDTO command){
 		
-		String result = memberDao.memberIdCheck(command);
+		Boolean result = memberDao.memberIdCheck(command);
 		
 		System.out.println(result);
 				
 		ModelAndView mav = new ModelAndView();
 		
-		if(result==null || result.equals("")){
+		if(result){
+			mav.setViewName("member/memberIdCheckResult");			
+		} else{
 			mav.setViewName("member/memberIdCheckOk");
 			mav.addObject("id", command.getId());
-		} else{
-			mav.setViewName("member/memberIdCheckResult");
 		}
 		
 		return mav;
 		
+		
+	}
+	
+	@RequestMapping(value="/login.do", method=RequestMethod.GET)
+	public ModelAndView login(){
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("member/memberLogin");
+		
+		return mav;		
+	}
+	
+	@RequestMapping(value="/login.do", method=RequestMethod.POST)
+	public ModelAndView loginSubmit(MemberDTO command, HttpSession session, HttpServletResponse resp, HttpServletRequest req){
+		
+		int result = memberDao.memberLogin(command);
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(result==memberDao.LOGIN_OK){
+			
+			String name = memberDao.getUserInfo(command);
+			
+			session.setAttribute("sname", name);
+			
+			String saveid = req.getParameter("saveid");
+			
+			if(saveid==null || saveid.equals("")){
+				Cookie ck = new Cookie("saveid", command.getId());
+				ck.setMaxAge(0);
+				resp.addCookie(ck);				
+			} else{			
+				Cookie ck = new Cookie("saveid", command.getId());
+				ck.setMaxAge(60*60*24);
+				resp.addCookie(ck);
+			}
+				
+			mav.setViewName("member/memberLoginSuccess");
+			
+		} else if(result==memberDao.NOT_ID || result==memberDao.NOT_PWD){
+			
+			mav.setViewName("member/memberLoginFail");
+			
+		} else{
+			
+			mav.setViewName("member/memberLoginError");
+		}		
+		
+		return mav;
+	}
+	
+	@RequestMapping("/logout.do")
+	public ModelAndView logout(HttpSession session){
+		
+		session.invalidate();
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("member/logout");
+		
+		return mav;
 		
 	}
 	

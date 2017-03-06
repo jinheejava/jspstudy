@@ -9,9 +9,12 @@
 	<!-- controller -->
 	<bean id="helloController" class="yong.controller.HelloController"/> <!-- 17.02.28 -->
 	
-	<bean id="memoController" class="yong.controller.MemoController"/> <!-- 17.03.03 -->
-	
+	<bean id="memoController" class="yong.controller.MemoController"/> <!-- 17.03.03 -->	
 	<bean id="memberController" class="jin.controller.MemberController"/>
+	
+	<bean id="indexController" class="yong.controller.IndexController"/> <!-- 17.03.06 -->	
+	<bean id="orederController" class="yong.controller.OrderController"/>
+	<bean id="paramController" class="yong.controller.ParamController"/>
 	
 	<!-- service/DAO, DAO 말고 service를 사용하는 개발자도 있음 --><!-- 17.03.03 -->
 	<bean id="memoDao" class="yong.memo.model.MemoDAOImple"/>

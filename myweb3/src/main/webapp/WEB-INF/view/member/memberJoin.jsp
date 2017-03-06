@@ -8,7 +8,7 @@
 </head>
 <script>
 	function idCheck(){
-		window.open('idCheck.do','idCheck','width="350", height="150"');	
+		window.open('idCheck.do','idCheck','width=350 height=150');	
 	}	
 </script>
 <body>
