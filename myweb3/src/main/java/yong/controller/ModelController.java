@@ -16,13 +16,15 @@ public class ModelController {
 		//Map=인터페이스, new로 객체 생성X
 		//Spring은 내가 생성하고 싶은 객체를 매개변수로 적어주면 자동으로 생성해주기 때문에 우린 바로 사용하면 된다
 		
-		model.put("result", "Map 객체를 이용한 데이터 전달"); //return에 지정해주지 않아도 자동으로 다음 jsp로 전달
+		model.put("result", "Map 객체를 이용한 데이터 전달"); //Spring에서는 map을 선언하면 자동으로 다음 페이지에 전달해 주기 때문에 return에 지정해주지 않아도 자동으로 다음 jsp에 전달
 		
 		return "model/modelSuccess";
 	}
 	
 	@RequestMapping("/modelTest2.do")
 	public String modelTest2(Model model){
+		//Model=인터페이스, new로 객체 생성X
+		//Spring은 내가 생성하고 싶은 객체를 매개변수로 적어주면 자동으로 생성해주기 때문에 우린 바로 사용하면 된다
 		
 		model.addAttribute("result", "Model 객체를 이용한 데이터 전달");
 		
@@ -49,7 +51,7 @@ public class ModelController {
 	
 	@RequestMapping("/model/modelSuccess.do")
 	public Model modelTest5(){		
-		//Model은 인터페이스라 new를 이용하여 객체를 생성할 수 없어서 model을 상속받아 만든 자식 객체를 이용해 객체를 생성한다
+		//Model은 인터페이스라 new를 이용하여 객체를 생성할 수 없어서 model을 상속받아 만든 자식 객체를 이용해 객체를 생성한다 -> 자식개체 : ExtendedModelMap
 		Model model = new ExtendedModelMap();
 		
 		model.addAttribute("result", "Model을 반환해 전달한 데이터");

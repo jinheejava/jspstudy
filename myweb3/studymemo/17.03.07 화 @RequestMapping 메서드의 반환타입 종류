@@ -1,0 +1,45 @@
+17.03.07 화
+
+ * @RequestMapping 메서드의 반환타입 종류
+ 
+ - ModelAndView(명시적 지정 방법)
+  : 뷰 정보 및 모델 정보를 담고 있는 ModelAndView 객체
+  * 어떤 경로로 이동할 지 jsp 페이지를 명시하는 반환타입 / 내가 가는 뷰를 지정
+  
+ - Model(묵시적 지정 방법)
+  : Map을 상속받아 구현해놓은 Spring만의 Map 객체. 
+   Key, value 값만 가지고 있는 정보 객체
+    뷰에 전달할 객체 정보를 담고있는 Model을 리턴한다. 이 때 뷰 이름은 사용자의 요청 URL로부터 결정된다.
+   (RequestToViewNameTranslator를 통해 뷰 결정 -> 명령어 설정시 .이하를 생략하고 받아들이기 때문에 URL경로.do라고 명령어를 지정해주면 됨)
+   카페글 : http://cafe.naver.com/seokstudy/856 참고
+  
+ - Map(묵시적 지정 방법)
+  : 컬렉션 객체의 Map.
+   Key, value 값만 가지고 있는 정보 객체
+    뷰에 전달할 객체 정보를 담고있는 Model을 리턴한다. 이 때 뷰 이름은 사용자의 요청 URL로부터 결정된다.
+   (RequestToViewNameTranslator를 통해 뷰 결정 -> 명령어 설정시 .이하를 생략하고 받아들이기 때문에 URL경로.do라고 명령어를 지정해주면 됨)
+   
+ - String(명시적 지정 방법)
+  : 뷰 이름을 리턴한다.
+  * 어떤 경로로 이동할 지 jsp 페이지를 명시하는 반환타입 / 내가 가는 뷰를 지정
+  단순한 페이지 이동만 있을 경우에 사용.
+  
+ - View
+  : View 객체를 직접 리턴.
+  파일 다운로드의 경우를 반환 타입이 jsp 페이지가 아니라 파일 그 자체!..
+  
+ - void(묵시적 지정 방법)
+  : 내가 어떤 뷰를 보여줄 지 지정해주지 X
+  뷰를 사용자의 URL에 의해 결정
+  RequestToViewNameTranslator를 통해 뷰 결정
+  -> .이하를 생략한다 URL경로.do라고 명령어를 지정해주면 됨
+  
+ - @ResponseBody 어노테이션 적용
+  : 메서드에서 @ResponseBody 어노테이션이 적용된 경우, 리턴 객체를 HTTP 응답으로 전송한다.
+   HttpMessageConverter를 이용해 객체를 HTTP 응답 스트림으로 변환한다.
+   → 추천X  
+  
+  # 암묵적 View 지정 방법 / 명시적 View 지정 방법 
+  
+  파일 : view/view, view/ani, ViewTestController, AniController
+   

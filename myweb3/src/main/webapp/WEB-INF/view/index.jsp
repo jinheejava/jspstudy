@@ -43,7 +43,7 @@
 		<br>
 		<li><a href="viewTest1.do">명시적 뷰 지정</a></li>
 		<li><a href="viewTest2.do">명시적 뷰 지정2</a></li>
-		<li><a href="view/viewTest.do">묵시적 뷰 지정</a></li>
+		<li><a href="view/viewTest.do">묵시적 뷰 지정</a></li><!-- 명령어 설정시 .이하를 생략하고 받아들이기 때문에 URL경로.do라고 명령어를 지정해주면 됨 -->
 		<li><a href="viewTest3.do">컨트롤러에서 다른 명령어 바로 실행하기</a></li>
 		<li><a href="modelTest1.do">모델테스트1(Map)</a></li>
 		<li><a href="modelTest2.do">모델테스트2(Model)</a></li>
