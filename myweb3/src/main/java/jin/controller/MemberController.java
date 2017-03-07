@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import jin.member.model.MemberDAO;
@@ -86,13 +88,14 @@ public class MemberController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("member/memberLogin");
+		mav.setViewName("member/login");
 		
 		return mav;		
 	}
 	
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
-	public ModelAndView loginSubmit(MemberDTO command, HttpSession session, HttpServletResponse resp, HttpServletRequest req){
+	public ModelAndView loginSubmit(MemberDTO command, HttpSession session, 
+			@RequestParam(value="saveid", required=false) String saveid, HttpServletResponse resp, HttpServletRequest req){
 		
 		int result = memberDao.memberLogin(command);
 		
@@ -104,12 +107,13 @@ public class MemberController {
 			
 			session.setAttribute("sname", name);
 			
-			String saveid = req.getParameter("saveid");
+			//System.out.println("saveid: "+saveid);
 			
 			if(saveid==null || saveid.equals("")){
 				Cookie ck = new Cookie("saveid", command.getId());
 				ck.setMaxAge(0);
 				resp.addCookie(ck);				
+				
 			} else{			
 				Cookie ck = new Cookie("saveid", command.getId());
 				ck.setMaxAge(60*60*24);

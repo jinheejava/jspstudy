@@ -18,7 +18,7 @@ public class ParamController {
 	@RequestMapping("/paramTest.do")
 	public ModelAndView paramTest(@RequestParam(value="idx", defaultValue="1") int idx,
 			@RequestParam(value="str", required=false) String str){ /*Spring은 페이지 이동에서 넘어오는 파라미터들을 @RequestParam를 이용해 매개값으로 넣으면 자동으로 받아와지며 
-																	뒤에 내가 적은 자료형으로 자동 형변환 해줌 */
+																	뒤에 내가 적은 자료형으로 자동 형변환 해준다 */
 		/* http://localhost:9090/myweb3/paramTest.do?idx=3&str=spring => 실행O
 		 * http://localhost:9090/myweb3/paramTest.do?idx=3 => 에러
 		 * @RequestParam은 필수값으로 여겨져 파라미터 값이 없을 경우엔 에러 발생.
@@ -28,8 +28,7 @@ public class ParamController {
 		 * 이 때에는, 파라미터가 없을 경우에 자동적으로 넘어가는 기본값을 defaultValue 옵션으로 설정할 수 있고 이럴 때에는 값이 없는 것이 아니므로 required 옵션은 사용하지 않아도 된다.*/
 		
 		System.out.println("idx: "+idx);
-		System.out.println("str: "+str);
-		
+		System.out.println("str: "+str);		
 		
 		ModelAndView mav = new ModelAndView();
 		

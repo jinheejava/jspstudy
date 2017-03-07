@@ -16,6 +16,10 @@
 	<bean id="orederController" class="yong.controller.OrderController"/>
 	<bean id="paramController" class="yong.controller.ParamController"/>
 	
+	<bean id="viewTestController" class="yong.controller.ViewTestController"/> <!-- 17.03.07 -->
+	<bean id="modelController" class="yong.controller.ModelController"/>
+	<bean id="aniController" class="yong.controller.AniController"/>
+	
 	<!-- service/DAO, DAO 말고 service를 사용하는 개발자도 있음 --><!-- 17.03.03 -->
 	<bean id="memoDao" class="yong.memo.model.MemoDAOImple"/>
 	<bean id="memberDao" class="jin.member.model.MemberDAOImple"/>
