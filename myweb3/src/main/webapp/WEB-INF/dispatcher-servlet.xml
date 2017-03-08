@@ -20,6 +20,13 @@
 	<bean id="modelController" class="yong.controller.ModelController"/>
 	<bean id="aniController" class="yong.controller.AniController"/>
 	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> <!-- 17.03.08 -->
+		<property name="maxUploadSize">
+			<value>104857600</value>
+		</property> <!-- 요즘은 zero config를 지향해서  설정을 안해주는게 보통이지만 업로드의 경우 property를 이용해 여러가지 제한을 줄 수 있음 -->
+	</bean>
+	<bean id="fileController" class="yong.controller.FileController"/>
+	
 	<!-- service/DAO, DAO 말고 service를 사용하는 개발자도 있음 --><!-- 17.03.03 -->
 	<bean id="memoDao" class="yong.memo.model.MemoDAOImple"/>
 	<bean id="memberDao" class="jin.member.model.MemberDAOImple"/>
@@ -29,6 +36,19 @@
 	<!-- 클래스는 기본적으로 제공이되고 이를 객체를 생성하고 사용하려면 등록을 해주어야함 -->
 		<property name="prefix" value="/WEB-INF/view/"/> <!-- 접두어로 경로지정 -->
 		<property name="suffix" value=".jsp"/> <!-- 접미어로 .jsp 가 자동으로 등록되도록 설정 -->
+		<property name="order" value="1"></property> <!-- 우선순위 설정 -->
 	</bean>
+	
+	<bean id="yongDown" class="yong.view.DownloadView"/> <!-- 17.03.08 -->
+	<!-- 링크를 클릭했을 때 파일이 다운로드 되도록 view를 설정해주는 클래스파일  -->
+	
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"></property> <!-- 우선순위 설정 -->
+	</bean>
+	<!-- view를 빈에 대한 이름, 객체의 아이디 로 찾겠다.
+		파일 다운로드 할 때 bean의 이름(뷰 이름)을 객체의 아이디로 찾아야하는데 우리가 위에서 뷰 이름 앞에 접두어로 경로, 접미어로 .jsp를 주도록 설정해주었기 때문에 이를 다시 셋팅해주어야한다.
+		다시 셋팅해 주는 태그이기 때문에 id는 지정해주지 않고 클래스만 지정해주면 되나, 이를 설정해주어도 view설정 bean 태그들 중에 viewResolver의 우선순위가 더 높아 우선순위 또한 property를 이용해 
+		이 태그가 더 높도록 설정해주어야한다 
+		뷰 네임을 실행 할 때 다운로드에서 먼저 찾고 없을 경우엔  접두어,접미어를 붙여 jsp페이지로 이동할 수 있도록 -->
 
 </beans>

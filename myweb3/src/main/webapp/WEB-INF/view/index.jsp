@@ -30,17 +30,11 @@
 		</c:otherwise>
 	</c:choose>
 	<ul>
-		<li><a href="hello.do">Spring MVC</a></li>
-		<li><a href="memoWrite.do">메모 작성하기</a></li>
-		<li><a href="memberJoin.do">회원가입</a></li>
+		<li> 17.03.08</li>
+		<li><a href="fileUploadForm.do">파일업로드 테스트</a></li>
+		<li><a href="fileDownList.do">파일 다운로드 목록</a></li>				
 		<br>
-		<li><a href="order.do">편의점 발주 시스템</a></li>		
-		<li><a href="paramTest.do?idx=3&str=spring"> 파라미터 테스트 </a></li>
-		<li><a href="cookieView.do">쿠키 값 확인하기</a></li>
-		<li><a href="cookieMake.do">쿠키 값 저장하기</a></li>
-		<li><a href="sessionView.do"> 세션 확인하기 </a></li>
-		<li><a href="sessionMake.do"> 세션 저장하기 </a></li>
-		<br>
+		<li> 17.03.07</li>
 		<li><a href="viewTest1.do">명시적 뷰 지정</a></li>
 		<li><a href="viewTest2.do">명시적 뷰 지정2</a></li>
 		<li><a href="view/viewTest.do">묵시적 뷰 지정</a></li><!-- 명령어 설정시 .이하를 생략하고 받아들이기 때문에 URL경로.do라고 명령어를 지정해주면 됨 -->
@@ -51,6 +45,19 @@
 		<li><a href="model/modelSuccess.do">모델테스트4(Map반환)</a></li>
 		<li><a href="model/modelSuccess.do">모델테스트5(Model반환)</a></li>
 		<li><a href="aniFindA.do">애니메이션 검색</a></li>
+		<br>
+		<li> 17.03.06</li>
+		<li><a href="order.do">편의점 발주 시스템</a></li>		
+		<li><a href="paramTest.do?idx=3&str=spring"> 파라미터 테스트 </a></li>
+		<li><a href="cookieView.do">쿠키 값 확인하기</a></li>
+		<li><a href="cookieMake.do">쿠키 값 저장하기</a></li>
+		<li><a href="sessionView.do"> 세션 확인하기 </a></li>
+		<li><a href="sessionMake.do"> 세션 저장하기 </a></li>		
+		<br>
+		<li> 17.03.03</li>
+		<li><a href="memoWrite.do">메모 작성하기</a></li>
+		<li><a href="memberJoin.do">회원가입</a></li>
+		<li><a href="hello.do">Spring MVC</a></li>	
 	</ul>
 </body>
 
