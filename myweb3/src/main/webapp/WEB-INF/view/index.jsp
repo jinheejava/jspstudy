@@ -30,6 +30,9 @@
 		</c:otherwise>
 	</c:choose>
 	<ul>
+		<li> 17.03.09</li>
+		<li><a href="emp.do">마지막 사원관리 프로그램(Mybatis)</a></li>
+		<br>
 		<li> 17.03.08</li>
 		<li><a href="fileUploadForm.do">파일업로드 테스트</a></li>
 		<li><a href="fileDownList.do">파일 다운로드 목록</a></li>				

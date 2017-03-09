@@ -6,6 +6,32 @@
 	<!-- configs 설정파일 -->
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 	
+		<!-- Mybatis 설정 --> <!-- 17.03.09 -->
+		<!-- 1.datasource -->
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+			<property name="username" value="scott"/>
+			<property name="password" value="1234"/>			
+		</bean>
+		<!-- 2.트랜잭션관리자 등록 -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"/>
+		</bean>
+		<!-- 3.Mybatis 설정 -->
+		<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"/>
+			<property name="configLocation" value="classpath:/mybatis-config.xml"/><!-- 설정파일 위치 classpath=src부터 -->
+		</bean>
+		<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+			<!-- 생성하자마자 에러가 나는 클래스는 기본 생성자가 없이 파라미터로 생성자를 받아야하는 클래스로, 파라미터 생성자 값을 설정해주어야 한다 -->
+			<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
+		</bean>
+	
+	
+	
+	
+	
 	<!-- controller -->
 	<bean id="helloController" class="yong.controller.HelloController"/> <!-- 17.02.28 -->
 	
@@ -27,9 +53,24 @@
 	</bean>
 	<bean id="fileController" class="yong.controller.FileController"/>
 	
+	<bean id="empController" class="yong.controller.EmpController"/> <!-- 17.03.09 -->
+	
+	
+	
+	
 	<!-- service/DAO, DAO 말고 service를 사용하는 개발자도 있음 --><!-- 17.03.03 -->
 	<bean id="memoDao" class="yong.memo.model.MemoDAOImple"/>
 	<bean id="memberDao" class="jin.member.model.MemberDAOImple"/>
+	
+	<bean id="empDao" class="yong.emp.model.EmpDAOImple"> <!-- 17.03.09  -->
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
+		
+	
+	
+	
 	
 	<!-- view -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!-- 17.02.28 -->

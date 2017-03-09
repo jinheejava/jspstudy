@@ -1,0 +1,72 @@
+17.03.09 목
+
+ * MaBatis (DAO 역할 분담)
+ 
+ Maven - MaBatis -> 에러가 나면 그 흐름을 보여주는 모든 페이지를 다 봐야함
+ 
+ MyBatis 메뉴얼 : http://www.mybatis.org/mybatis-3/ko/index.html
+ 
+  # MaBatis? 
+ : JDBC를 대체하는 퍼시스턴스 프레임워크.
+  (데이터베이스 프로그래밍을 좀 더 쉽게 할 수 있게 도와주는 개발 프레임워크)
+    SQL을 우리가 직접 만들되 별도의 관리만 해줌
+	
+  # 특징
+  1. JDBC 프레임 워크
+  2. 개발자는 SQL을 작성하고 MaBatis는 JDBC를 사용해서 실행
+  3. JDBC를 사용할 때의 try~
+  4. SQL 매퍼(Mapper)다
+	SQL을 자동생성해주지 않고 우리가 명시해주어야 한다
+
+  매퍼 파일에 SQL 문을 작성해서 관리해주어야한다
+  
+  # MaBatis의 구조
+  SqlMap.xml : SQL이 작성된 매퍼 파일
+  MaBatisConfig.xml : 여러가지 매퍼파일을 설정해서 불러옴
+  Configuration : 이 설정파일을 읽어 각 각의 매퍼 파일들을 기능을 할 수 있는 매퍼로 만들어 줌
+  
+  Map / DTO / 기본 데이터 타입들 을 매개변수로 사용 가능
+  Map / DTO / 기본 데이터 타입들로 반환타입 사용 가능
+  
+  =======================================================================================================
+  
+  # 사원 관리 프로그램에 적용하면서 실습해나갈 것.
+  
+  # 
+  
+  1) Maven 중앙저장소에서 MyBatis 검색
+   MaBatis / MaBatis Spring 두개 라이브러리 pom.xml에 추가
+   : 원래는 더 많은 라이브러리들이 필요하지만 Maven이 MyBatis 하나만 다운 받아도 이에 관련된 라이브러리를 자동으로 추가해준다 ~
+  
+  2) MyBatis 설정파일 생성
+   : src/main/java -> new -> other -> XML > XML file > maBatis-config 생성 -> 이 파일이 mabatis-config 파일이라는 것을 알려주기 위해선
+    그 <!DOCTYPE> 이 위에 설정되어 있어야 하는데... -> Mabatis 메뉴얼에서 시작하기 > 아래로 살짝 내려가면 <!DOCTYPE ~ > 메모장 거쳐서 붙여넣기 ->
+	(제대로 된지 확인하려면 <configration> 태그가 활성화되어야 함) -> <configration> </configration> 태그 안에 mapper 파일 설정해주기
+	
+  3) MaBatis를 Spring이 관리할 수 있도록 설정해주어야 함
+   : dispatcher-servlet.xml 에 등록..
+   
+   
+  =======================================================================================================
+  
+  ## mybatis 적용 개발 과정
+	1) DB 스키마 설계
+	2) 디자인 설계(컨텐츠  뼈대)
+	3) DTO, DAO 설계
+		3-1. DTO 설계
+		3-2. 매퍼설계(sql)
+		3-3. DAO 설계
+	4) 컨트롤러 작성
+		4-1. 명령어 선택
+		4-2. Action 클래스 설계
+		4-3. 설정 파일에 등록
+		
+  
+	# EmpDel
+	 : emp.jsp - empSQL.xml - EmpDAOImple - EmpController
+	 
+	# EmpList
+	 : emp.jsp - empSQL - EmpDAOImple - EmpController
+   
+  
+  
