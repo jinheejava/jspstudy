@@ -1,0 +1,33 @@
+17.03.13 월
+
+ * 컨트롤러 자동 등록
+ 
+ dispatcher-servlet.xml
+ 
+ <beans 태그
+ xmlns 다음에
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="" 에
+ http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+ 추가
+ 
+  # 완성 ↓
+ <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+  dispatcher-servlet config 단에 등록
+ <context:component-scan base-package="yong" use-default-filters="false"> <!-- 17.03.13 -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> 
+ </context:component-scan>
+ <!-- Controller라는 annotation을 가진 파일을 yong이라는 폴더로부터 검색(scan)하겠다 -->
+ 
+ =========================================================================================================
+ 
+ * 게시판
+ 
+ =========================================================================================================
+ 
+ 
