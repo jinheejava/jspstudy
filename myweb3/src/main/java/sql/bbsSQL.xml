@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yong.bbs">
+	<select id="bbsList" parameterType="Map" resultType="yong.bbs.model.BbsDTO">
+		select * from (select rownum as rnum,a.* from (select * from jsp_bbs order by idx desc) a)b 
+		where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+		<!-- sql매퍼파일엔 계산식을 넣지않는것을 추구함- DAO에서 계산하고 그 결과만을 반환 -->
+	</select>
+	<select id="totalCnt" resultType="Integer"> <!-- int/Integer 상관없음 -->
+		select count(*) from jsp_bbs
+	</select>
+	
+</mapper>

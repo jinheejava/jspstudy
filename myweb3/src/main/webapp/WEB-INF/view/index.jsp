@@ -30,6 +30,9 @@
 		</c:otherwise>
 	</c:choose>
 	<ul>
+		<li> 17.03.13</li>
+		<li><a href="bbsList.do">마지막 게시판</a> </li>
+		<br>
 		<li> 17.03.09</li>
 		<li><a href="emp.do">마지막 사원관리 프로그램(Mybatis)</a></li>
 		<br>

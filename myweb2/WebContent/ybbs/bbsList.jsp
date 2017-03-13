@@ -17,7 +17,7 @@
 			<th> 작성자</th>
 			<th> 조회수</th>
 		</tr>
-	</thead>
+	</thead> 
 	<tbody>
 		<c:set var="dtos" value="${requestScope.arr}"/>
 		<c:if test="${empty dtos}">
