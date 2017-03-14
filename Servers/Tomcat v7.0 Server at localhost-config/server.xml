@@ -64,7 +64,7 @@
          Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
     <!-- <Connector URIEncoding="utf-8" connectionTimeout="20000" port="9090" protocol="HTTP/1.1" redirectPort="8443"/> -->
-    <Connector URIEncoding="utf-8" useBodyEncodingURI="true" connectionTimeout="20000" port="9090" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector URIEncoding="utf-8" connectionTimeout="20000" port="9090" protocol="HTTP/1.1" redirectPort="8443" useBodyEncodingURI="true"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -128,7 +128,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="myweb2" path="/myweb2" reloadable="true" source="org.eclipse.jst.jee.server:myweb2"/><Context docBase="myweb" path="/myweb" reloadable="true" source="org.eclipse.jst.jee.server:myweb"/><Context docBase="myweb3" path="/myweb3" reloadable="true" source="org.eclipse.jst.jee.server:myweb3"/></Host>
+      <Context docBase="myweb2" path="/myweb2" reloadable="true" source="org.eclipse.jst.jee.server:myweb2"/><Context docBase="myweb" path="/myweb" reloadable="true" source="org.eclipse.jst.jee.server:myweb"/><Context docBase="myweb3" path="/myweb3" reloadable="true" source="org.eclipse.jst.jee.server:myweb3"/><Context docBase="myweb4" path="/myweb4" reloadable="true" source="org.eclipse.jst.jee.server:myweb4"/></Host>
     </Engine>
   </Service>
 </Server>
