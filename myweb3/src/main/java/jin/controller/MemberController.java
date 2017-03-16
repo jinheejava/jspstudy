@@ -52,34 +52,29 @@ public class MemberController {
 	
 	@RequestMapping("/idCheckForm.do")
 	public ModelAndView idCheck(){
+		//팝업 창으로 idcheck하기
 		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("member/memberIdCheck");
 		
 		return mav;
-		
-		
 	}
 	
 	@RequestMapping("/idCheck.do")
 	public ModelAndView idCheckSubmit(MemberDTO command){
 		
 		Boolean result = memberDao.memberIdCheck(command);
-		
-		System.out.println(result);
+	
+		//System.out.println("CotrollerID: "+command.getId());
+		//System.out.println("CotrollerResult: "+result);
 				
 		ModelAndView mav = new ModelAndView();
 		
-		if(result){
-			mav.setViewName("member/memberIdCheckResult");	
-		} else{
-			mav.setViewName("member/memberIdCheckOk");
-			mav.addObject("id", command.getId());
-		}
+		mav.addObject("result", result);
+		mav.setViewName("member/IdCheckResult");
 		
 		return mav;
-		
 	}
 	
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)

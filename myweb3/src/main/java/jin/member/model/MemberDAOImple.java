@@ -55,11 +55,16 @@ public class MemberDAOImple implements MemberDAO {
 			
 			rs = ps.executeQuery();
 			
-			return rs.next();			
+			//System.out.println("DAOID: "+dto.getId());
+			
+			boolean result = rs.next();
+			//System.out.println("DAOResult: "+result);
+			
+			return result;		
 			
 		} catch(Exception e){
 			e.printStackTrace();
-			return false;			
+			return null;			
 		} finally{
 			try{
 				if(rs!=null) rs.close();
