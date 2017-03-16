@@ -5,19 +5,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+<script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
 	function idCheck(){
-		window.open('idCheck.do','idCheck','width=350 height=150');	
-	}	
+		sendRequest('/view/member/memberJoin.jsp', null, idcheckResult, 'GET');	
+	}
+	function idcheckResult(){
+		if(XHR.readyState==4){
+			if(XHR.status==200){
+				var result = XHR.responseText;
+				
+				var resultId = document.getElementById('idconfirm');
+				
+				if(result){
+					resultTd.innerHTML = '이미 사용중인 ID입니다';
+				} else{
+					resultTd.innerHTML = '사용 가능한 ID입니다';
+				}
+			}
+		}
+	}
+	
 </script>
+</head>
 <body>
 <h2> 회원가입 </h2>
-<form name="memberJoin" action="memberJoin.do" method="post">
+<form name="memberJoin" action="memberJoin.do">
 	<fieldset style="width:350px;">
 	<legend> 회원가입</legend>
 		<ul>
-			<li> ID: <input type="text" name="id" readonly><input type="button" value="중복검사" onclick="idCheck()"></li>
+			<li> ID: <input type="text" name="id"><input type="button" value="중복검사" onclick="idCheck()"></li>
+			<li id="idconfirm"> &nbsp; </li>
 			<li> PWD: <input type="password" name="pwd"> </li>
 			<li> 이름: <input type="text" name="name"> </li>
 			<li> TEL: <input type="text" name="tel"> </li>

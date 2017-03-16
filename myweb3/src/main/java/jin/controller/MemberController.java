@@ -50,7 +50,7 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping(value="/idCheck.do", method=RequestMethod.GET)
+	@RequestMapping("/idCheckForm.do")
 	public ModelAndView idCheck(){
 		
 		ModelAndView mav = new ModelAndView();
@@ -62,7 +62,7 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping(value="/idCheck.do", method=RequestMethod.POST)
+	@RequestMapping("/idCheck.do")
 	public ModelAndView idCheckSubmit(MemberDTO command){
 		
 		Boolean result = memberDao.memberIdCheck(command);
@@ -72,14 +72,13 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result){
-			mav.setViewName("member/memberIdCheckResult");			
+			mav.setViewName("member/memberIdCheckResult");	
 		} else{
 			mav.setViewName("member/memberIdCheckOk");
 			mav.addObject("id", command.getId());
 		}
 		
 		return mav;
-		
 		
 	}
 	
