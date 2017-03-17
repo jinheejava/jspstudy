@@ -21,14 +21,15 @@
 				var resultId = document.getElementById('idconfirm');
 				
 				if(result=='true'){
+					resultId.style.color = 'red';
 					resultId.innerHTML = '이미 사용중인 ID입니다';
 				} else{
+					resultId.style.color = 'blue';
 					resultId.innerHTML = '사용 가능한 ID입니다';
 				}
 			}
 		}
 	}
-	
 </script>
 </head>
 <body>
@@ -38,7 +39,7 @@
 	<legend> 회원가입</legend>
 		<ul>
 			<li> ID: <input type="text" name="id"><input type="button" value="중복검사" onclick="idCheck()"> <br>
-				<span style="color:red;" id='idconfirm'></span></li>
+				<span id='idconfirm'></span></li>
 			<li> PWD: <input type="password" name="pwd"> </li>
 			<li> 이름: <input type="text" name="name"> </li>
 			<li> TEL: <input type="text" name="tel"> </li>
